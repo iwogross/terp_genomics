@@ -1,3 +1,4 @@
+# #!/usr/bin/env Rscript
 ## R code to simulate DNA sequences for a breeding program resembling that of 
 ## a natural terrapin population.
 
@@ -47,26 +48,26 @@ pop <- newPop(FOUNDERPOP,
 # Next steps, add overlapping generations, add low/high attrition rates for adults/offspring
  
 print("Breeding")
-breeding <- vector(length = 11, mode = "list")
+breeding <- vector(length = 3, mode = "list")
 breeding[[1]] <- pop
  
-for (i in 2:11) {
+for (i in 2:3) {
     print(i)
     sires <- selectInd(pop = breeding[[i - 1]],
-                       nInd = 10,
+                       nInd = 3,
                        sex = "M",
                        use = "rand",
                        sP = SP)
  
     dams <- selectInd(pop = breeding[[i - 1]],
-                      nInd = 10,
+                      nInd = 3,
                       sex = "F",
                       use = "rand",
                       sP = SP)
  
     breeding[[i]] <- randCross2(males = sires,
                                 females = dams,
-                                nCrosses = 20,
+                                nCrosses = 10,
                                 nProgeny = 3,
                                 simParam = SP)
 }
